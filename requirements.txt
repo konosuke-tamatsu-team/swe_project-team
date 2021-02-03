@@ -1,0 +1,6 @@
+Django
+psycopg2
+freeze
+djangorestframework
+django-filter 
+djangorestframework-jwt
