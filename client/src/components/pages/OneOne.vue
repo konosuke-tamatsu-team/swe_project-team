@@ -2,24 +2,86 @@
     <div style="color:black;">
 
         
-        
-        <v-btn elevation="21" text x-large v-on:click="createQuestionDic(info.slice(), 2),step=1">
-            一問一答を始める
-        </v-btn>
-
-
-
-
-        <template v-if="step === 1" >
-           
-               {{arrangedQuestionsLis[0].questionSentence}}
-               {{arrangedQuestionsLis[0].coices[0]}}
-               {{arrangedQuestionsLis[0].coices[1]}}
-               {{arrangedQuestionsLis[0].coices[2]}}
-               {{arrangedQuestionsLis[0].coices[3]}}
-
-        
+       <template v-if="step === 0" >
+            <p></p><br>
+            <p></p><br>
+            <center>
+                <div class="my-2">
+                    <v-btn x-large color="success" dark style="width:70%; height:100px; font-size: 50px; " v-on:click="createQuestionDic(info.slice(), 5),step=1">
+                    一問一答を始める
+                    </v-btn>
+                </div>
+            </center> 
         </template>
+
+
+
+        <!-- 問題テンプレート -->
+        <template v-if="step === 1" >
+            <p></p><br>
+            <p></p><br>
+
+            <center>
+                <v-btn elevation="2" raised>{{arrangedQuestionsLis[questionNumber].questionSentence}}</v-btn><br>
+                <p></p>
+                <v-btn x-large color="success" dark v-on:click="judgAnswer(arrangedQuestionsLis[questionNumber].coices[0],questionNumber),step=2">{{arrangedQuestionsLis[questionNumber].coices[0]}}</v-btn><br>
+                <p></p>
+                <v-btn x-large color="success" dark v-on:click="judgAnswer(arrangedQuestionsLis[questionNumber].coices[1],questionNumber),step=2">{{arrangedQuestionsLis[questionNumber].coices[1]}}</v-btn><br>
+                <p></p>
+                <v-btn x-large color="success" dark v-on:click="judgAnswer(arrangedQuestionsLis[questionNumber].coices[2],questionNumber),step=2">{{arrangedQuestionsLis[questionNumber].coices[2]}}</v-btn><br>
+                <p></p>
+                <v-btn x-large color="success" dark v-on:click="judgAnswer(arrangedQuestionsLis[questionNumber].coices[3],questionNumber),step=2">{{arrangedQuestionsLis[questionNumber].coices[3]}}</v-btn>
+            </center>        
+        </template>
+
+        <!-- 以下正解不正解アラート -->
+        <template v-if="answerStatus === 'correct' && step === 2">
+            <p></p><br>
+            <p></p><br>
+            <center><v-alert border="left" colored-border color="deep-purple accent-4" elevation="2" style="width:50%">
+                正解<br>解説<br>
+                {{arrangedQuestionsLis[questionNumber].comment}}<br>
+                <v-btn elevation="2" v-on:click="nextQuestion()">次の問題へ</v-btn>
+            </v-alert></center>
+        </template>
+
+        <template v-if="answerStatus === 'incorrect' && step === 2">
+             <p></p><br>
+            <p></p><br>
+            <center><v-alert border="left" colored-border color="deep-purple accent-4" elevation="2" style="width:50%">
+                不正解<br>解説<br>
+                {{arrangedQuestionsLis[questionNumber].comment}}<br>
+                <v-btn elevation="2" v-on:click="nextQuestion()">次の問題へ</v-btn>
+            </v-alert></center>
+        </template>
+
+
+
+
+
+        <template v-if="isFinish">
+             <p></p><br>
+            <p></p><br>
+            <center><v-alert border="left" colored-border color="deep-purple accent-4" elevation="2" style="width:50%">
+                終了<br>
+                {{correctCount}}問正解です。
+            </v-alert></center>
+            <center>
+                <div class="my-2">
+                    <v-btn x-large color="success" dark style="width:70%; height:100px; font-size: 50px; " v-on:click="initialization(); createQuestionDic(info.slice(), 5),step=1">
+                    もう一度
+                    </v-btn>
+                </div>
+            </center> 
+        </template>
+
+
+       
+
+
+
+
+        
 
            
     </div>
@@ -39,7 +101,9 @@ export default {
       qId:0,
       arrangedQuestionsLis:[],
       questionNumber:0,
-
+      answerStatus:null,
+      isFinish:false,
+      correctCount:0
       }
     },
     watch: {
@@ -63,6 +127,17 @@ export default {
             ).catch(e => {
                  console.log(e)
             })
+        },
+        initialization(){
+            this.data= null,
+            this.selectedQueston=[],
+            this.step=0,
+            this.qId=0,
+            this.arrangedQuestionsLis=[],
+            this.questionNumber=0,
+            this.answerStatus=null,
+            this.isFinish=false,
+            this.correctCount=0
         },
         createQuestionDic(array, num){
             //問題用の辞書を返す関数
@@ -105,7 +180,31 @@ export default {
                 arr[i] = temp;
             }
             return arr;
+        },
+        //以下
+        judgAnswer(answer,questionNumber){
+            //正解不正解の判定&アラート画面表示
+            let correctAnswer=this.arrangedQuestionsLis[questionNumber]["correctAnswer"]
+            let usersAnswer=answer
+            if (correctAnswer === usersAnswer) {
+                this.answerStatus="correct"
+                this.correctCount+=1
+            }else{
+                this.answerStatus="incorrect"
+            }
+        },
+        nextQuestion(){
+            //次の問題を表示させる
+            if(this.questionNumber<4){
+                this.questionNumber+=1
+                this.step=1
+            }else{ 
+             this.isFinish=true
+             this.step=3
+            }
+
         }
+        
     }
 }
 </script>
