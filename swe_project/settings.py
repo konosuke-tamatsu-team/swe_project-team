@@ -29,7 +29,17 @@ INSTALLED_APPS = [
     'sw_oneone',
     'rest_framework',
     'rest_framework.authtoken',
+    'allauth', # 追加
+    'allauth.account', # 追加
+    'allauth.socialaccount', # 追加
+    'rest_auth.registration', # 追加
+    'django.contrib.sites', # 追加
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+SITE_ID = 1
+
+
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,

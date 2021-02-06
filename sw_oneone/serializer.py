@@ -6,9 +6,16 @@ from .models import User, Question
 
 
 class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True, required=False)
+    
     class Meta:
         model = User
-        fields = ('name', 'mail')
+        fields = ('id','name','password')
+        extra_kwargs = {'password': {'write_only': True}}
+    
+
+    def create(self, validated_data):
+        return User.objects.create_user(request_data=validated_data)
 
 
 class QuestionSerializer(serializers.ModelSerializer):
