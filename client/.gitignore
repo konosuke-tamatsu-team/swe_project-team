@@ -2,13 +2,13 @@
 node_modules
 /dist
 
-sw_oneone/__pycache__/
+sw_oneone/__pycache__
 
 
 # local env files
 .env.local
 .env.*.local
-db.sqlite3
+/Users/tamatsukonosuke/swe_project/db.sqlite3
 
 # Log files
 npm-debug.log*
