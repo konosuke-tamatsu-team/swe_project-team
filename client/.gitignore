@@ -2,6 +2,8 @@
 node_modules
 /dist
 
+.sw_oneone/__pycache__/
+
 
 # local env files
 .env.local
