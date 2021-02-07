@@ -1,52 +1,74 @@
 <template>
-    <div style="color:green;">
-        過去問
-        <div id="app">
-            
-            {{ info }}
-           
-        <button v-on:click="get_ones">Greet</button>
-        <button v-on:click="a">dataに</button>
+    <div>
+        <div>
+            <p></p>
+            <h2>{{title}}</h2>   
+            <v-btn depressed v-if="templateSwitch !== 'home'" @click="templateSwitch='home';title='過去問'" style="float: right">戻る</v-btn>
         </div>
+        
+        <div>
+            <template v-if="templateSwitch === 'home'">
+                <v-list>
+                        <v-btn class="ma-2" outlined color="indigo">
+                        <v-list-item>
+                            <v-list-item-content>
+                                <v-list-item-title @click="templateSwitch='PQThirtyTwo';title='第32回（令和元年度）過去問'" >第32回（令和元年度）の過去問をみる</v-list-item-title>
+                            </v-list-item-content>
+                        </v-list-item>
+                        </v-btn>
+
+                        <v-btn class="ma-2" outlined color="indigo">
+                        <v-list-item>
+                            <v-list-item-content>
+                                <v-list-item-title @click="templateSwitch='PQThirtyOne';title='第31回（令和元年度）過去問'">第31回（令和元年度）の過去問をみる</v-list-item-title>
+                            </v-list-item-content>
+                        </v-list-item>
+                        </v-btn>
+
+                        <v-btn class="ma-2" outlined color="indigo">
+                        <v-list-item>
+                            <v-list-item-content>
+                                <v-list-item-title @click="templateSwitch='PQThirty';title='第30回（令和元年度）過去問'">第30回（令和元年度）の過去問をみる</v-list-item-title>
+                            </v-list-item-content>
+                        </v-list-item>
+                        </v-btn>
+
+                    </v-list>
+            </template>
+        </div>
+
+        <template v-if="templateSwitch === 'PQThirty'">
+            <PQThirty></PQThirty>
+        </template>
+        <template v-if="templateSwitch === 'PQThirtyOne'">
+            <PQThirtyOne></PQThirtyOne>
+        </template>
+        <template v-if="templateSwitch === 'PQThirtyTwo'">
+            <PQThirtyTwo></PQThirtyTwo>
+        </template>
+        
+      
+        
+
     </div>
 </template>
 
 <script>
-import router from "../../router";
-import axios from 'axios';
+import PQThirty from './PastQuestions/PQThirty.vue'
+import PQThirtyOne from './PastQuestions/PQThirtyOne.vue'
+import PQThirtyTwo from './PastQuestions/PQThirtyTwo.vue'
 export default {
+    components: {
+        PQThirty,
+        PQThirtyOne,
+        PQThirtyTwo
+     },
     name: "PastQuestions",
     data () {
     return {
-      info: null,
-      data: null,
+        templateSwitch:'home',
+        title:'過去問',
       }
     },
-    mounted: function() {
-    this.checkLoggedIn();
-    },
-    methods: {
-        checkLoggedIn() {
-            this.$session.start();
-            if (!this.$session.has("token")){
-                router.push("/auth")
-            }
-        },
-        get_ones() {
-            //401だから認証されてないことが原因か？？http://localhost:8000/api/
-            axios.get('http://localhost:8080/api/questions/').then(response => (this.info = response["data"])
-            // eslint-disable-next-line
-            ).catch(e => {
-                 console.log(e)
-            })
-            
-            //this.a()
-        },
-        a(){
-            console.log(typeof(this.info))
-            this.data= this.info[0]
-         
-        }
-    }
 }
 </script>
