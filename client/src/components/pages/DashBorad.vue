@@ -44,7 +44,7 @@
         <v-toolbar-title>SWE</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
-            <v-btn text>For Enterprise</v-btn>
+            <v-btn text v-on:click="logout()">ログアウト</v-btn>
             <v-menu offset-y>
             <template v-slot:activator="{on}">
             <v-btn v-on="on" text>Support<v-icon>mdi-menu-down</v-icon></v-btn>
@@ -91,6 +91,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+import router from "../../router";
 import OneOne from './OneOne.vue'
 import WrongQuestions from './WrongQuestion.vue'
 import Configuration from './Configuration.vue'
@@ -119,6 +121,15 @@ export default {
             {name: 'Preminum themes',icon: 'mdi-vuetify'},
         ],
     }
+  },
+  methods: {
+    logout(){
+      axios.post('http://localhost:8080/api/v1/rest-auth/logout/').then(response => (this.info = response,router.push("/auth"))
+            // eslint-disable-next-line
+            ).catch(e => {
+                 console.log(e)
+            })
+    },
   }
 }
 </script>

@@ -4,3 +4,6 @@ freeze
 djangorestframework
 django-filter 
 djangorestframework-jwt
+django-allauth
+django-rest-auth
+django-cors-headers
