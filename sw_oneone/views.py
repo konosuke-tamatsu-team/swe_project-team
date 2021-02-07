@@ -11,6 +11,7 @@ from django.http import HttpResponse, JsonResponse
 from django.core.serializers.json import DjangoJSONEncoder
 from rest_framework.renderers import JSONRenderer
 from rest_framework.decorators import action
+from rest_framework.views import APIView
 
 class AuthRegister(generics.CreateAPIView):
     permission_classes = (permissions.AllowAny,)
@@ -34,6 +35,11 @@ class UserViewSet(viewsets.ModelViewSet):
 class QuestionViewSet(viewsets.ModelViewSet):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
+
+class Logout(APIView):
+    def get(self, request, format=None):
+        request.user.auth_token.delete()
+        return Response(status=status.HTTP_200_OK)
 
 
 

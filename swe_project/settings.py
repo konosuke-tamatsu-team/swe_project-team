@@ -29,11 +29,13 @@ INSTALLED_APPS = [
     'sw_oneone',
     'rest_framework',
     'rest_framework.authtoken',
-    'allauth', # 追加
-    'allauth.account', # 追加
-    'allauth.socialaccount', # 追加
-    'rest_auth.registration', # 追加
-    'django.contrib.sites', # 追加
+    'allauth',
+    'allauth.account', 
+    'allauth.socialaccount', 
+    'rest_auth.registration',
+    'django.contrib.sites',
+    'rest_auth',
+    
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

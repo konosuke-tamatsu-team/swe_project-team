@@ -33,6 +33,14 @@
                             required
                         />
                         <v-text-field
+                            v-model="credentials.email"
+                            :counter="70"
+                            label="email"
+                            :rules="rules.email"
+                            maxlength="70"
+                            required
+                        />
+                        <v-text-field
                             type="password"
                             v-model="credentials.password"
                             :counter="20"
@@ -152,10 +160,11 @@ export default {
         login() {
             if (this.$refs.form.validate()) {
             this.loading = true;
-            axios.post('http://localhost:8080/auth/', this.credentials).then(res => {
+            console.log(this.credentials)
+            axios.post('http://localhost:8080/api/v1/rest-auth/login/', this.credentials).then(res => {
                 this.$session.start();
-                this.$session.set('token', res.data.token);
-                router.push('/');
+                this.$session.set('token', res.data.key);
+                router.push('/dashboard');
             // eslint-disable-next-line
             }).catch(e => {
                 this.loading = false;
@@ -175,13 +184,9 @@ export default {
             this.loading = true;
             console.log(this.credentials_allAuth)
             axios.post('http://localhost:8080/api/v1/rest-auth/registration/', this.credentials_allAuth).then(res => {
-                alert(1)
                 this.$session.start();
-                alert(2)
                 this.$session.set('token', res.data.token);
-                alert(3)
                 router.push('/');
-                alert(4)
             // eslint-disable-next-line
             }).catch(e => {
                 this.loading = false;
@@ -195,15 +200,6 @@ export default {
                 })
             })
             }
-        },
-        s() {
-            //alert(1)
-            //401だから認証されてないことが原因か？？http://localhost:8000/api/
-            axios.post('http://localhost:8080/api/v1/rest-auth/registration/').then(response => (this.info = response["data"])
-            // eslint-disable-next-line
-            ).catch(e => {
-                 console.log(e)
-            })
         },
         createAccount() {
             if (this.$refs.form.validate()) {
