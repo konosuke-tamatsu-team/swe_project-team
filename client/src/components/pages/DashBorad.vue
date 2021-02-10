@@ -13,17 +13,17 @@
                 <v-list>
                     <v-list-item>
                         <v-list-item-content>
-                            <v-list-item-title @click="templateSwitch='OneOne'">ランダム出題一問一答</v-list-item-title>
+                            <v-list-item-title @click="templateSwitch='OneOne'">ランダム出題</v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
                     <v-list-item>
                         <v-list-item-content>
-                            <v-list-item-title @click="templateSwitch='ByYearOneone'">年度ごとの一問一答</v-list-item-title>
+                            <v-list-item-title @click="templateSwitch='ByYearOneone'">年度ごとランダム出題</v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
                     <v-list-item>
                         <v-list-item-content>
-                            <v-list-item-title @click="templateSwitch='ByFieldOneone'">分野ごとの一問一答</v-list-item-title>
+                            <v-list-item-title @click="templateSwitch='ByFieldOneone'">分野ごとランダム出題</v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
                     <v-list-item>
