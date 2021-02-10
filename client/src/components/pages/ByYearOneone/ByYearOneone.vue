@@ -1,6 +1,6 @@
 <template>
     <div style="color:black;">
-
+        
         <div>
             <p></p>
             <h2>{{title}}</h2>   

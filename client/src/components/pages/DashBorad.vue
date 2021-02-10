@@ -18,7 +18,12 @@
                     </v-list-item>
                     <v-list-item>
                         <v-list-item-content>
-                            <v-list-item-title @click="templateSwitch='ByYearOneone'">年度ごとの一問一答(出題)</v-list-item-title>
+                            <v-list-item-title @click="templateSwitch='ByYearOneone'">年度ごとの一問一答</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                    <v-list-item>
+                        <v-list-item-content>
+                            <v-list-item-title @click="templateSwitch='ByFieldOneone'">分野ごとの一問一答</v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
                     <v-list-item>
@@ -82,6 +87,9 @@
         <template v-if="templateSwitch === 'ByYearOneone'">
             <ByYearOneone></ByYearOneone>
         </template>
+        <template v-if="templateSwitch === 'ByFieldOneone'">
+            <ByFieldOneone></ByFieldOneone>
+        </template>
         <template v-if="templateSwitch === 'WrongQuestions'">
             <WrongQuestions></WrongQuestions>
         </template>
@@ -103,6 +111,7 @@ import axios from 'axios';
 import router from "../../router";
 import OneOne from './OneOne.vue'
 import ByYearOneone from './ByYearOneone/ByYearOneone.vue'
+import ByFieldOneone from './ByFieldOneone/ByFieldOneone.vue'
 import WrongQuestions from './WrongQuestion.vue'
 import Configuration from './Configuration.vue'
 import PastQuestions from './PastQuestions.vue'
@@ -112,6 +121,7 @@ export default {
     components: {
     OneOne,
     ByYearOneone,
+    ByFieldOneone,
     WrongQuestions,
     Configuration,
     PastQuestions,
