@@ -21,4 +21,4 @@ class UserSerializer(serializers.ModelSerializer):
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
-        fields = ('id','question', 'aChoice', 'dChoice1', 'dChoice2', 'dChoice3', 'dChoice4', 'comment', 'created_at', 'updated_at', 'author')
+        fields = ('id','question', 'aChoice', 'dChoice1', 'dChoice2', 'dChoice3', 'dChoice4', 'comment', 'created_at', 'updated_at', 'author','is_past_question','number_of_times','field')

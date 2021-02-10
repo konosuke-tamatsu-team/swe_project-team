@@ -13,7 +13,7 @@
                 <v-list>
                     <v-list-item>
                         <v-list-item-content>
-                            <v-list-item-title @click="templateSwitch='OneOne'">一問一答</v-list-item-title>
+                            <v-list-item-title @click="templateSwitch='OneOne'">一問一答(ランダム出題)</v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
                     <v-list-item>

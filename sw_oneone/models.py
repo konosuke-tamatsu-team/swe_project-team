@@ -24,3 +24,8 @@ class Question(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, related_name='entries', on_delete=models.CASCADE)
+
+    
+    is_past_question = models.BooleanField(default=False)
+    number_of_times = models.IntegerField(default=0, blank=True, null=True)
+    field = models.IntegerField(default=0, blank=True, null=True)
