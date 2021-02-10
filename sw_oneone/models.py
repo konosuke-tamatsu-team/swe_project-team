@@ -29,3 +29,4 @@ class Question(models.Model):
     is_past_question = models.BooleanField(default=False)
     number_of_times = models.IntegerField(default=0, blank=True, null=True)
     field = models.IntegerField(default=0, blank=True, null=True)
+    number_of_question = models.IntegerField(default=0, blank=True, null=True)
