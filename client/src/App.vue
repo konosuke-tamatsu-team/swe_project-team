@@ -2,37 +2,39 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
+      color="green"
       dark
     >
-      <div class="d-flex align-center">
+      <div @click="toTop()" class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
           class="shrink mr-2"
           contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          src="https://konosuke.s3-ap-northeast-1.amazonaws.com/logo.jpg"
           transition="scale-transition"
           width="40"
         />
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+
+        <div @click="toTop()" class="shrink mt-1 hidden-sm-and-down" style="width:100;font-size: 200%;">SWE</div>
+
+       
       </div>
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
+      <v-btn text>
+        <span @click="toLp()" class="mr-2">このアプリについて</span>
+        <v-icon>mdi-open-in-new</v-icon>
+      </v-btn>
+
+      <v-btn text>
+        <span @click="register()" class="mr-2">無料登録</span>
+        <v-icon>mdi-open-in-new</v-icon>
+      </v-btn>
+
+      <v-btn text>
+        <span @click="login()" class="mr-2">ログイン</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
@@ -41,11 +43,15 @@
       <router-view/>
     </v-main>
   </v-app>
+
 </template>
+
+
 
 <script>
 import router from "./router";
 export default {
+  
   name: 'App',
 
   data: () => ({
@@ -60,6 +66,18 @@ export default {
           router.push("/auth")
       }
     },
+    login() {
+      router.push("/auth")
+    },
+    register(){
+      router.push("/registration")
+    },
+    toTop(){
+      router.push("/")
+    },
+    toLp(){
+      router.push("/lp")
+    }
   }
 };
 </script>
