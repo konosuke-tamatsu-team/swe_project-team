@@ -6,50 +6,44 @@
             
 
             <p></p>
-            <br>
+     
             
             <h1 class="thick-font">Opa ?
             </h1>
 
             <p></p>
-            <br>
-            <p></p>
-
+           
             <div class="thin-font">社会福祉士の資格とりたい。でも範囲広すぎ。
             </div>
              <p></p>
 
             
-            <div class="thin-font">社会福祉士国家試験の合格率は約3割難易度が高い。
-            </div>
+            
 
             <div class="thin-font">Opaで社会福祉士国家試験の勉強効率を最大化しませんか？
             </div>
 
-            <p></p>
-            <br>
-
-            <p></p>
-
-            
             <div class="inline-block_test">
                 <img class="fit-picture" style="padding-top: 80;"
                 src="../../../assets/lp1.png"
                 alt="Grapefruit slice atop a pile of other slices">
             </div>
 
+            <center>
             <v-btn
                 class="ma-2;thin-font"
                 :loading="loading2"
                 :disabled="loading2"
                 color="success"
-                @click="loader = 'loading2'"
+                @click="login()"
                 >
                 学習を始める
                 <template v-slot:loader>
                     <span>Loading...</span>
                 </template>
             </v-btn>
+            <p></p>
+            </center>
 
             </center>
 
@@ -63,9 +57,16 @@
 </template>
 
 <script>
+import router from "../../../router";
 export default {
-  name: 'LpOne'
-}
+  name: 'LpOne',
+  methods: {
+    login() {
+      router.push("/auth")
+    },
+  }
+};
+
 </script>
 
 <style scoped>

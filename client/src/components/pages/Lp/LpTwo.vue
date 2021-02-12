@@ -1,15 +1,7 @@
 <template>
     <div>
-       
             
-        <center class="wrapp">
-        
-
-            <p></p>
-            <br>
-            <p></p>
-            <br>
-            
+        <center class="wrapp">            
             <h1 class="thick-font">Opaで解決できる課題
             </h1>
 
@@ -56,7 +48,7 @@
 
         <div class="wrapp">
 
-            <v-btn class="ma-2;thin-font" :disabled="loading2" color="success" @click="loader = 'loading2'">
+            <v-btn class="ma-2;thin-font" :disabled="loading2" color="success" @click="login()">
                 学習を始める
                 <template v-slot:loader>
                     <span>Loading...</span>
@@ -72,9 +64,15 @@
 </template>
 
 <script>
+import router from "../../../router";
 export default {
-  name: 'LpTwo'
-}
+  name: 'LpTwo',
+  methods: {
+    login() {
+      router.push("/auth")
+    },
+  }
+};
 </script>
 
 <style scoped>

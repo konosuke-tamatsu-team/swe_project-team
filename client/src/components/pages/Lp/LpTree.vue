@@ -1,22 +1,7 @@
 <template>
     <div>
        
-            
         <center class="wrapp">
-        
-
-            <p></p>
-            <br>
-            <p></p>
-            <br>
-            <p></p>
-            <br>
-            <p></p>
-            <br>
-            <p></p>
-            <br>
-            <p></p>
-            <br>
             
             <h1 class="thick-font">機能<br>要修正
             </h1>
@@ -64,7 +49,7 @@
 
         <div class="wrapp">
             <p></p>
-            <v-btn class="ma-2;thin-font" :disabled="loading2" color="success" @click="loader = 'loading2'">
+            <v-btn class="ma-2;thin-font" :disabled="loading2" color="success" @click="login()">
                 学習を始める
                 <template v-slot:loader>
                     <span>Loading...</span>
@@ -73,12 +58,9 @@
         </div>
 
 
-        <p></p>
+            <p></p>
             <br>
             <p></p>
-            
-         
-        
 
         <div style="width:100%;background:#81C784;">
             <center>
@@ -95,9 +77,15 @@
 </template>
 
 <script>
+import router from "../../../router";
 export default {
-  name: 'LpTree'
-}
+  name: 'LpTree',
+  methods: {
+    login() {
+      router.push("/auth")
+    },
+  }
+};
 </script>
 
 <style scoped>
