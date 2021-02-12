@@ -16,7 +16,7 @@
         />
 
 
-        <div @click="toTop()" class="shrink mt-1 hidden-sm-and-down" style="width:100;font-size: 200%;">SWE</div>
+        <div @click="toTop()" class="shrink mt-1 hidden-sm-and-down" style="width:100;font-size: 200%;">Opa</div>
 
        
       </div>

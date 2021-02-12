@@ -49,9 +49,9 @@
                 </v-list>
             </v-container>
         </v-navigation-drawer>
-        <v-app-bar color="primary" dark app clipped-left>
+        <v-app-bar color=#4CAF50 dark app clipped-left>
         <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
-        <v-toolbar-title>SWE</v-toolbar-title>
+        <v-toolbar-title>Opa</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
             <v-btn text v-on:click="logout()">ログアウト</v-btn>
@@ -75,8 +75,8 @@
             </v-menu>
         </v-toolbar-items>
         </v-app-bar>    
-        <v-footer color="primary" dark app>
-            SWE
+        <v-footer color="#4CAF50" dark app>
+            Opa
         </v-footer>
         <template v-if="templateSwitch === 'Home'">
             <Home></Home>
