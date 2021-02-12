@@ -22,7 +22,7 @@
             
             <div style="width:auto">
                 
-                <div class="thick-font" style="padding-left:150px; padding-top:100px;">
+                <div class="thick-font" style="padding-left:150px;">
                     社会福祉士国家試験<br>
                     学習の<span style="color:#EC407A">効率</span>を<span style="color:#FFEB3B">最大化</span>しませんか
                 </div>
