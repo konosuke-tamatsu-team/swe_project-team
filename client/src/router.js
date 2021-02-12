@@ -6,7 +6,7 @@ import Registration from '@/components/pages/Registration'
 import OneOne from '@/components/pages/OneOne'
 import DashBorad from '@/components/pages/DashBorad'
 import Top from '@/components/pages/Top'
-import Lp from '@/components/pages/Lp'
+import Lp from '@/components/pages/Lp/Lp'
 
 Vue.use(Router)
 

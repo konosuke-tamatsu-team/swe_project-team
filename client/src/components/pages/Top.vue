@@ -1,43 +1,42 @@
 <template>
     <div class="back-ground">
-        <div>
+        <div class="wrapp">
             
-
-            <div class="inline-block_test">
-                <img class="fit-picture" style="padding-top: 80;"
-                src="../../assets/top2.png"
-                alt="Grapefruit slice atop a pile of other slices">
+            <div style="width:auto">
+                <div>
+                    <img class="float-left" style="padding-top: 80;"
+                    src="../../assets/top2.png"
+                    alt="Grapefruit slice atop a pile of other slices">
+                </div>
+                <div>
+                    <img class="float-left" style="padding-top: 80;"
+                    src="../../assets/top3.png"
+                    alt="Grapefruit slice atop a pile of other slices">
+                </div>
+                <div>
+                    <img class="float-left" style="padding-top: 80;"
+                    src="../../assets/top4.png"
+                    alt="Grapefruit slice atop a pile of other slices">
+                </div>
             </div>
-            <div class="inline-block_test">
-                <img class="fit-picture" style="padding-top: 80;"
-                src="../../assets/top3.png"
-                alt="Grapefruit slice atop a pile of other slices">
-            </div>
-             <div class="inline-block_test">
-                <img class="fit-picture" style="padding-top: 80;"
-                src="../../assets/top4.png"
-                alt="Grapefruit slice atop a pile of other slices">
-            </div>
-
-            <div>
+            
+            <div style="width:auto">
+                
                 <div class="thick-font" style="padding-left:150px; padding-top:100px;">
                     社会福祉士国家試験<br>
                     学習の<span style="color:#EC407A">効率</span>を<span style="color:#FFEB3B">最大化</span>しませんか
-                
+                </div>
+            </div>
 
-                    <v-btn>
+            <div>
+                <v-btn>
                         <span @click="register()" class="mr-2">無料登録</span>
                         <v-icon>mdi-open-in-new</v-icon>
                     </v-btn>
-
- 
-                    
                     <v-btn>
                         <span @click="login()" class="mr-2">ログイン</span>
                         <v-icon>mdi-open-in-new</v-icon>
                     </v-btn>
-
-                </div>
             </div>
 
 
@@ -84,6 +83,18 @@ export default {
         font-size: 72px;
         font-weight: 700
     }
+    .float-left {
+        float: left;
+        width: 30%;
+        margin-right: 8px;
+        margin-bottom: 8px;
+    }
+    .wrapp {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
 
 </style>
 
