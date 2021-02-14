@@ -121,8 +121,7 @@ export default {
             }
         },
         get_ones() {
-            //401だから認証されてないことが原因か？？http://localhost:8000/api/
-            axios.get('http://localhost:8080/api/questions/').then(response => (this.info = response["data"])
+            axios.get('http://localhost:8080/api/questions/').then(response => (this.info = response,console.log(response))
             // eslint-disable-next-line
             ).catch(e => {
                  console.log(e)
@@ -200,6 +199,21 @@ export default {
                 this.step=1
             }else{ 
              this.isFinish=true
+             //ここにかく一旦ストック
+             let array = []
+             for(let dic of this.arrangedQuestionsLis){
+                 
+                 array.push(dic.id);
+             }
+             console.log(array)
+             //useriDをここに持ってくる
+             console.log(this.info)
+        
+             axios.poset('http://localhost:8080/api/workedQuestios/').then(response => (console.log(response))
+             // eslint-disable-next-line
+             ).catch(e => {
+                 console.log(e)
+             })
              this.step=3
             }
 

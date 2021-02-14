@@ -28,6 +28,11 @@
                     </v-list-item>
                     <v-list-item>
                         <v-list-item-content>
+                            <v-list-item-title @click="templateSwitch='YetWork'">解いていない問題をとく</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                    <v-list-item>
+                        <v-list-item-content>
                             <v-list-item-title @click="templateSwitch='WrongQuestions'">間違えた問題</v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
@@ -102,6 +107,9 @@
         <template v-if="templateSwitch === 'Match'">
             <Match></Match>
         </template>
+        <template v-if="templateSwitch === 'YetWork'">
+            <YetWork></YetWork>
+        </template>
        
   </v-app>
 </template>
@@ -117,6 +125,8 @@ import Configuration from './Configuration.vue'
 import PastQuestions from './PastQuestions.vue'
 import Home from './Home.vue'
 import Match from './Match.vue'
+import YetWork from './YetWork.vue'
+
 export default {
     components: {
     OneOne,
@@ -126,7 +136,8 @@ export default {
     Configuration,
     PastQuestions,
     Match,
-    Home
+    Home,
+    YetWork
   },
   data(){
     return{

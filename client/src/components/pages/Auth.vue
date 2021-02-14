@@ -4,7 +4,7 @@
             <v-flex xs12 sm8 lg4 md5>
                 <v-card class="login-card" v-if="step === 0">
                     <v-card-title>
-                    <span class="headline">Login to 社会福祉士国家試験攻略アプリ</span>
+                    <span class="headline">ログイン</span>
                     </v-card-title>
                     <v-spacer/>
                     <v-card-text>
@@ -164,6 +164,7 @@ export default {
             axios.post('http://localhost:8080/api/v1/rest-auth/login/', this.credentials).then(res => {
                 this.$session.start();
                 this.$session.set('token', res.data.key);
+                localStorage.setItem('correntUser_email',this.credentials.email)
                 router.push('/dashboard');
             // eslint-disable-next-line
             }).catch(e => {

@@ -1,5 +1,5 @@
 from django.db import models
-
+from jsonfield import JSONField
 
 class User(models.Model):
     name = models.CharField(max_length=32)
@@ -30,3 +30,7 @@ class Question(models.Model):
     number_of_times = models.IntegerField(default=0, blank=True, null=True)
     field = models.IntegerField(default=0, blank=True, null=True)
     number_of_question = models.IntegerField(default=0, blank=True, null=True)
+
+class WorkedQuestion(models.Model):
+    uId = models.IntegerField()
+    workedQuestion = JSONField(blank=True, null=True)
