@@ -13,6 +13,7 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.decorators import action
 from rest_framework.views import APIView
 import urllib.request
+import jsonfield
 
 class AuthRegister(generics.CreateAPIView):
     permission_classes = (permissions.AllowAny,)

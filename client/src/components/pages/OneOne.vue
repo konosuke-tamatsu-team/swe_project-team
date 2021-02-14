@@ -121,7 +121,7 @@ export default {
             }
         },
         get_ones() {
-            axios.get('http://localhost:8080/api/questions/').then(response => (this.info = response,console.log(response))
+            axios.get('http://localhost:8080/api/questions/').then(response => (console.log(1),this.info = response['data'],console.log())
             // eslint-disable-next-line
             ).catch(e => {
                  console.log(e)
@@ -207,7 +207,8 @@ export default {
              }
              console.log(array)
              //useriDをここに持ってくる
-             console.log(this.info)
+             var value = localStorage.correntUser_email;
+             console.log(value)
         
              axios.poset('http://localhost:8080/api/workedQuestios/').then(response => (console.log(response))
              // eslint-disable-next-line
