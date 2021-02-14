@@ -32,5 +32,5 @@ class Question(models.Model):
     number_of_question = models.IntegerField(default=0, blank=True, null=True)
 
 class WorkedQuestion(models.Model):
-    uId = models.IntegerField()
     workedQuestion = JSONField(blank=True, null=True)
+    user_email  = models.EmailField(default='dafault@ff.com')
